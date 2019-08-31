@@ -21,6 +21,19 @@ class SampTwo():
 class CategoryComp():
     """
     CategoryComp compares categories of two samples
+    Inputs: 
+        ref: iterable of categorical data
+        comp: iterable of categorical data
+        use_mask=True: boolean
+    Assumptions:
+        - Number of categories are less than np.sqrt(len(data))
+        - More than 1 category in both reference and comparison
+        - use_mask adds vanishingly small support to categories in one data not contained in other
+    Class objects on output
+        - self.counts: pandas DataFrame with reference in row 0, comparison in row 1, columns are categories
+        - self.proportions: row-frequency of category observance
+        - self.chisq_stat: chi-squared statistic output
+        - self.chisq_p: p-value of the self.chisq_stat
     """
     def __init__(self, ref, comp, use_mask = True):
         pd_ref = pd.Series(ref)
