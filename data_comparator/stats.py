@@ -8,7 +8,15 @@ import sqlalchemy as sqla
 class SampTwo():
     """
     SampTwo takes two data samples and calculates the KS statistic between them
-    
+    Inputs:
+        ref: iterable of numerical data
+        comp: iterable of numerical data
+    Class objects on output
+        - self.counts: numpy array of length of reference and comparison arrays
+        - self.means: numpy array of means of reference and comparison arrays
+        - self.stds: numpy array of stds of reference and comparison arrays
+        - self.chisq_stat: chi-squared statistic output  
+        - self.chisq_p: p-value of the self.chisq_stat
     """
     def __init__(self, ref, comp):
         self.ks_stat, self.ks_p = ks_2samp(ref,comp)
